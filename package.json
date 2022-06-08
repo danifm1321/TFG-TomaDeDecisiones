@@ -1,0 +1,13 @@
+{
+    "name": "TFG-TomaDeDecisiones",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "node": "^10.19.0",
+        "ejs": "^3.1.5"
+    }
+}

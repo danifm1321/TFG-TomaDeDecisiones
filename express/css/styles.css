@@ -1,11 +1,15 @@
 #exp-wrapper {
-    width:30%;
+    width:40%;
     background-color:lightgray
 }
 
 .item-centrado {
-    margin-top: 40%;
-    margin-bottom: 40%;
+    margin-top: 45%;
+    margin-bottom: 45%;
+}
+
+main {
+    margin-bottom: 10%;
 }
 
 

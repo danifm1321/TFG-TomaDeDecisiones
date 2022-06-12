@@ -19,18 +19,19 @@
             <div class="justify-content-center d-flex mt-5 h-100">
                 <div id="exp-wrapper" class="d-flex aligns-items-center justify-content-center">
                     <button type="button" id="btn-comenzar-experimento" class="btn btn-dark btn-lg item-centrado">Comenzar experimento</button>
-                    <img src="" id="letra-experimento" class="border border-dark border-2 d-none w-100" alt="Letra"/>
+                    <img src="" id="letra-experimento" class="border border-dark border-2 d-none w-100 d-none" alt="Letra"/>
                     <div id="wrapper-4-imagenes" class="d-flex d-none">
                         <div class="wrapper-2-imagenes">
-                            <a href="" class="enlace-imagen"><img src="images/letra-d.png" id="conjunto-letra-1" class="imagen-conjunto border border-dark border-2 w-100" alt="Letra"/></a>
-                            <a href="" class="enlace-imagen"><img src="images/letra-s.png" id="conjunto-letra-2" class="imagen-conjunto border border-dark border-2 w-100" alt="Letra"/></a>
+                            <a href="" class="enlace-imagen"><img src="" id="conjunto-letra-1" class="imagen-conjunto border border-dark border-2 w-100" onclick="registra_tiempo_respuesta(0)" alt="Letra"/></a>
+                            <a href="" class="enlace-imagen"><img src="" id="conjunto-letra-2" class="imagen-conjunto border border-dark border-2 w-100" onclick="registra_tiempo_respuesta(1)" alt="Letra"/></a>
 
                         </div>
                         <div class="wrapper-2-imagenes">
-                            <a href="" class="enlace-imagen"><img src="images/letra-r.png" id="conjunto-letra-3" class="imagen-conjunto border border-dark border-2 w-100" alt="Letra"/></a>
-                            <a href="" class="enlace-imagen"><img src="images/letra-cardinal.png" id="conjunto-letra-4" class="imagen-conjunto border border-dark border-2 w-100" alt="Letra"/></a>
+                            <a href="" class="enlace-imagen"><img src="" id="conjunto-letra-3" class="imagen-conjunto border border-dark border-2 w-100" onclick="registra_tiempo_respuesta(2)" alt="Letra"/></a>
+                            <a href="" class="enlace-imagen"><img src="" id="conjunto-letra-4" class="imagen-conjunto border border-dark border-2 w-100" onclick="registra_tiempo_respuesta(3)" alt="Letra"/></a>
                         </div>
                     </div>
+                    <img src="images/imagen-blanca.png" id="blank-image" class="border border-dark border-2 w-100 d-none" alt="Imagen blanca"/>
                 </div>
             </div>
         </main>

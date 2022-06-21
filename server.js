@@ -9,16 +9,36 @@ app.use(express.static("express"));
 
 app.set('view engine', 'ejs');
 
-// index page
+//serve experiment page 
 app.get('/experimento', function(req, res) {
   res.render('pages/experimento');
 });
 
+//experiment page
+app.post('/experimento', function(req, res){
+  const { estado } = req.body
 
-// index page
+  if(estado == "comenzar")
+  {
+    let profileName = 'test'
+    let numberOfTrain = 1
+    let trainingActions = ['neutral', 'push']
+    c.train(profileName, trainingActions, numberOfTrain)
+  
+    c.live(profileName)
+  }
+  else if(estado == "finalizar")
+  {
+    //code
+  }
+
+});
+
+//serve index page
 app.get('/', function(req, res) {
   res.render('pages/index');
 });
+
 
 
 const server = http.createServer(app);
@@ -39,12 +59,7 @@ try {
 
   let c = new cortex.Cortex(user, socketUrl)
 
-  let profileName = 'test'
-  let numberOfTrain = 1
-  let trainingActions = ['neutral', 'push']
-  c.train(profileName, trainingActions, numberOfTrain)
 
-  c.live(profileName)
   /*  
   let streams = ['eeg']
   c.sub(streams)

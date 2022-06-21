@@ -5,6 +5,9 @@
  *  - handle 2 main flows : sub and train flow
  *  - use async/await and Promise for request need to be run on sync
  */
+
+const WebSocket = require('ws');
+
 module.exports = {
     Cortex: 
     class Cortex {

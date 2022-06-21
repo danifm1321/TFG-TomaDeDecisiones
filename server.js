@@ -27,8 +27,8 @@ server.listen(port);
 console.debug('Server listening on port ' + port);
 
 try {
-  const clientId = fs.readFileSync('client-id-tfg', 'utf8').trim();
-  const clientSecret = fs.readFileSync('client-secret-tfg', 'utf8').trim();
+  const clientId = fs.readFileSync('secrets/client-id-tfg', 'utf8').trim();
+  const clientSecret = fs.readFileSync('secrets/client-secret-tfg', 'utf8').trim();
 
   let socketUrl = 'wss://localhost:6868'
   let user = {

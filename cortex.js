@@ -391,10 +391,6 @@ module.exports = {
             await this.requestAccess().then((result)=>{requestAccessResult=result})
 
             let accessGranted = JSON.parse(requestAccessResult)
-            console.log("REQUEST ---------------------------------------- " + requestAccessResult + "------------------------REQUEST")
-
-            console.log("ACCESS ---------------------------------------- " + accessGranted['error'] + "------------------------ACCESS")
-
 
             // check if user is logged in CortexUI
             if ("error" in accessGranted){

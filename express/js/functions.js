@@ -4,6 +4,7 @@ var arraySoluciones = [];
 var experimento_empezado = false;
 var tiempos_respuesta = [0, 0, 0, 0]
 var necesita_parar = false
+var esta_preparado = false
 
 
 $(document).ready(function ()
@@ -15,8 +16,16 @@ $(document).ready(function ()
         if(event.which == 32 && !experimento_empezado && $('#wrapper-4-imagenes').hasClass('d-none'))            //Pulsa la tecla espacio para comenzar el experimento
         {
             event.preventDefault();
-            comienza_experimento();
-            setTimeout(finalizar_experimento, 300000);
+            if(!esta_preparado)
+            {
+                calibracion();
+                setTimeout(finalizar_experimento, 308000);
+            }
+            else
+            {
+                comienza_experimento(true);
+                setTimeout(finalizar_experimento, 300000);
+            }
 
         }
         else if(event.which == 113 && experimento_empezado && $('#wrapper-4-imagenes').hasClass('d-none'))       //Pulsa la tecla Q
@@ -42,8 +51,16 @@ $(document).ready(function ()
     });
 
     $( "#btn-comenzar-experimento" ).click(function() {
-        comienza_experimento();
-        setTimeout(finalizar_experimento, 300000);
+        if(!esta_preparado)
+        {
+            calibracion();
+            setTimeout(finalizar_experimento, 308000);
+        }
+        else
+        {
+            comienza_experimento(true);
+            setTimeout(finalizar_experimento, 300000);
+        }
       });
 
     $('.enlace-imagen').on('click', function(e) {
@@ -54,14 +71,43 @@ $(document).ready(function ()
 
 })
 
-function comienza_experimento()
+function calibracion()
 {
+    $.ajax({
+        type : "POST",
+        url : "experimento",
+        data : '{"estado": "preparar"}',
+        contentType: 'application/json;charset=UTF-8', 
+      });
+
+    $("#btn-comenzar-experimento").addClass("d-none");
+    $("#blank-image").removeClass("d-none");
+
+    setTimeout(comienza_experimento, 8000);
+
+    esta_preparado = true
+}
+
+function comienza_experimento(registrar_datos = false)
+{
+    if(registrar_datos)
+    {
+        $.ajax({
+            type : "POST",
+            url : "experimento",
+            data : '{"estado": "comenzar"}',
+            contentType: 'application/json;charset=UTF-8', 
+          });
+    }
+
     experimento_empezado = true;
     $("#btn-comenzar-experimento").addClass("d-none");
     $("#blank-image").addClass("d-none");
 
     $("#letra-experimento").removeClass("d-none");
 }
+
+
 
 function change_image()
 {
@@ -138,5 +184,12 @@ function finalizar_experimento()
         $("#letra-experimento").addClass("d-none");
         $("#blank-image").addClass("d-none");
         $("#btn-comenzar-experimento").removeClass("d-none");
+
+        $.ajax({
+            type : "POST",
+            url : "experimento",
+            data : '{"estado": "finalizar"}',
+            contentType: 'application/json;charset=UTF-8', 
+          });
     }
 }

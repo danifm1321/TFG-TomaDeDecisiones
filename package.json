@@ -9,8 +9,7 @@
         "express": "^4.17.1",
         "node": "^10.19.0",
         "ejs": "^3.1.5",
-        "async-limiter": "^2.0.0",
-        "ws": "^6.2.2"
+        "async-limiter": "^2.0.0"
     },
     "repository": {
         "type": "git",

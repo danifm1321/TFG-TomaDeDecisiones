@@ -23,7 +23,7 @@ $(document).ready(function ()
             }
             else
             {
-                comienza_experimento(true);
+                comienza_experimento();
                 setTimeout(finalizar_experimento, 300000);
             }
 
@@ -58,7 +58,7 @@ $(document).ready(function ()
         }
         else
         {
-            comienza_experimento(true);
+            comienza_experimento();
             setTimeout(finalizar_experimento, 300000);
         }
       });
@@ -73,13 +73,6 @@ $(document).ready(function ()
 
 function calibracion()
 {
-    $.ajax({
-        type : "POST",
-        url : "experimento",
-        data : '{"estado": "preparar"}',
-        contentType: 'application/json;charset=UTF-8', 
-      });
-
     $("#btn-comenzar-experimento").addClass("d-none");
     $("#blank-image").removeClass("d-none");
 
@@ -88,18 +81,8 @@ function calibracion()
     esta_preparado = true
 }
 
-function comienza_experimento(registrar_datos = false)
+function comienza_experimento()
 {
-    if(registrar_datos)
-    {
-        $.ajax({
-            type : "POST",
-            url : "experimento",
-            data : '{"estado": "comenzar"}',
-            contentType: 'application/json;charset=UTF-8', 
-          });
-    }
-
     experimento_empezado = true;
     $("#btn-comenzar-experimento").addClass("d-none");
     $("#blank-image").addClass("d-none");
@@ -184,12 +167,5 @@ function finalizar_experimento()
         $("#letra-experimento").addClass("d-none");
         $("#blank-image").addClass("d-none");
         $("#btn-comenzar-experimento").removeClass("d-none");
-
-        $.ajax({
-            type : "POST",
-            url : "experimento",
-            data : '{"estado": "finalizar"}',
-            contentType: 'application/json;charset=UTF-8', 
-          });
     }
 }
